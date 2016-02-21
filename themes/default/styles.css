@@ -1,0 +1,331 @@
+/*-- general ----------------------------------------------- */
+
+body {
+	padding-top: 80px;
+	background: #eee;
+}
+
+.navbar .avatar {
+	background-position: 0 10px;
+	height: 45px;
+	margin: -12px 0;
+}
+
+.rounded {
+	background: #fff;
+	border: 1px solid #ccc;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.rounded .page-header {
+	margin: 0;
+	padding-left: 30px;
+	padding-right: 30px;
+	border-bottom: 1px dashed #ccc;
+}
+
+/*-- tweets ----------------------------------------------- */
+
+#tweets {
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.175);
+}
+
+#tweets .tweet {
+	margin-bottom: 15px;
+	padding: 0 30px 10px 30px;
+	border-bottom: 1px dashed #ccc;
+}
+
+#tweets .tweet p {
+	margin: 0;
+}
+
+#tweets .tweet .meta,
+#tweets .tweet .meta a {
+	color: #999;
+	font-size: 12px;
+}
+
+#tweets .no-tweets {
+	padding: 0 30px;
+}
+
+#tweets .page-header {
+	margin-bottom: 0;
+}
+
+#tweets .tweet {
+	position: relative;
+	margin-bottom: 0;
+	padding: 15px 30px;
+}
+
+.tweet:before,
+.tweet:after {
+	display: inline-block;
+	vertical-align: text-top;
+	background: url('twitter_web_sprite_icons.png') no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+	width: 24px;
+	height: 24px;
+}
+
+.tweet .tweet-body,
+.tweet .tweet-left {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.tweet .tweet-left {
+	width: 58px;
+}
+
+.tweet .tweet-body {
+	width: calc(100% - 58px);
+	max-width: 100%;
+}
+
+.tweet .tweet-left img {
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+	margin: 5px 0;
+	height: 48px;
+	width: 48px;
+}
+
+.tweet.my-tweet {
+	background: linear-gradient(to right, rgba(30, 87, 153, 0.2) 0, rgba(125, 185, 232, 0) 25px);
+}
+
+.favorited:before,
+.favorited:after {
+	content: " ";
+	background-position: -30px -450px;
+	visibility: visible;
+}
+
+.retweeted:before,
+.retweeted:after {
+	content: " ";
+	background-position: 0 -450px;
+	visibility: visible;
+}
+
+.favorited.retweeted:before,
+.favorited.retweeted:after {
+	content: " ";
+	background-position: -60px -450px;
+	visibility: visible;
+}
+
+.full-name {
+	color: #292f33;
+	font-size: 1.2em;
+}
+
+.quoted-tweet {
+	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+	font-size: 0.8em;
+	margin: 5px 0 0;
+	padding: 10px;
+	background: #eee;
+}
+
+.quoted-tweet > .tweet,
+#tweets .quoted-tweet > .tweet {
+	border-bottom: none;
+	padding: 0;
+}
+
+/*-- pagination ----------------------------------------------- */
+
+.page-footer {
+	padding: 0 30px 20px 30px;
+}
+
+.amt-pagination {
+	text-align: center;
+	color: #666;
+}
+
+.amt-pagination .pagination {
+	margin-bottom: 0;
+}
+
+.amt-pagination .pages {
+	margin: 5px 0 0 0;
+}
+
+/*-- sidebar ----------------------------------------------- */
+
+#sidebar ul.list-group {
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.175);
+}
+
+#sidebar ul.list-group li {
+	display: block;
+	position: relative;
+	font-size: 0.8em;
+}
+
+#sidebar ul.list-group li a {
+	color: #195e77;
+	text-decoration: none;
+}
+
+#sidebar ul.list-group li.here,
+#sidebar ul.list-group li:hover {
+	background-color: #333;
+}
+
+#sidebar ul.list-group li.here a,
+#sidebar ul.list-group li:hover a {
+	color: #fff;
+	text-decoration: none;
+}
+
+#sidebar ul.list-group li a .month {
+	position: relative;
+	z-index: 3;
+	margin: 0 45px 0 0;
+}
+
+#sidebar ul.list-group li a .total {
+	position: absolute;
+	right: 10px;
+	color: #999;
+	text-align: right;
+	z-index: 2;
+}
+
+#sidebar ul.list-group li a .bar {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 1;
+	background-color: #d9edf5;
+}
+
+#sidebar ul.list-group li:last-child a .bar {
+	border-bottom-left-radius: 4px;
+}
+
+#sidebar ul.list-group li.here .bar,
+#sidebar ul.list-group li:hover .bar {
+	background-color: #33a0c9;
+}
+
+#sidebar ul.list-group li.here .total,
+#sidebar ul.list-group li:hover .total {
+	color: #fff;
+}
+
+#sidebar ul.list-group .list-group-item {
+	border-color: #bbb;
+}
+
+/*-- footer ----------------------------------------------- */
+
+#footer {
+	text-align: center;
+	padding: 10px 0;
+	margin-top: 30px;
+	border-top: 1px solid #ccc;
+	background: #fff linear-gradient(to bottom, #fff 0%, #eee 100%);
+	font-size: 0.9em;
+}
+
+/** Entities */
+.entity.entity-image,
+.entity.entity-video {
+	max-width: 100%;
+	display: block;
+	margin: 10px 0;
+	text-align: center;
+	position: relative;
+}
+
+.entity.entity-image img {
+	box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
+	max-width: 100%;
+	border-radius: 5px;
+	max-height: 500px;
+}
+
+.entity.entity-image .entity-toolbar {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: none;
+}
+
+.entity.entity-image:hover .entity-toolbar {
+	display: block;
+}
+
+.entity.entity-video .entity-video-thumbnail {
+	position: relative;
+	min-height: 100px;
+	margin-bottom: 5px;
+}
+
+.entity.entity-video img {
+	box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.15);
+	max-width: 100%;
+	border-radius: 5px;
+	max-height: 350px;
+}
+
+.entity.entity-video .entity-video-play {
+	position: absolute;
+	font-size: 40px;
+	left: 50%;
+	line-height: 40px;
+	margin: -35px 0 0 -30px;
+	top: 50%;
+	background: #fff;
+	border-radius: 50px;
+	padding: 7px 7px 7px 13px;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+}
+
+.entity.entity-hashtag,
+.entity.entity-mention {
+	font-weight: bold;
+}
+
+/** Buttons containing only an icon */
+.btn.btn-icon {
+	padding-left: 0;
+	padding-right: 0;
+	text-align: center;
+	width: 34px;
+	height: 34px;
+}
+
+.btn.btn-icon.btn-lg {
+	width: 48px;
+	height: 48px;
+}
+
+.btn.btn-icon.btn-sm {
+	width: 30px;
+	height: 30px;
+}
+
+.btn.btn-icon.btn-xs {
+	width: 22px;
+	height: 22px;
+}
+
+/** Buttons where the content may wrap */
+.btn.btn-wrap {
+	white-space: normal;
+}

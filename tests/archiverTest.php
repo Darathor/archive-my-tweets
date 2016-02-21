@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class ArchiverTest extends \PHPUnit_Framework_TestCase {
 
@@ -153,7 +153,7 @@ class ArchiverTest extends \PHPUnit_Framework_TestCase {
 	protected function getModelThatReturns($returnValue) {
 
 		// Create a Mock Object for the Model class
-		$model = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Model')
+		$model = $this->getMockBuilder('Darathor\ArchiveMyTweets\Model')
 			->disableOriginalConstructor()
 			->getMock();
 

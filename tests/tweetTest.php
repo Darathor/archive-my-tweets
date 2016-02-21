@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class TweetTest extends \PHPUnit_Framework_TestCase {
 
@@ -12,42 +12,42 @@ class TweetTest extends \PHPUnit_Framework_TestCase {
 	public function testGetDate() {
 		$t = new Tweet();
 		$t->created_at = '2013-01-22 13:00:37';
-		$this->assertEquals('1:00pm January 22nd 2013', $t->get_date());
+		$this->assertEquals('1:00pm January 22nd 2013', $t->getFormattedDate());
 	}
 
 	// get_linked_tweet(plain)
 	public function testLinkedTweetPlain() {
 		$t = new Tweet();
 		$t->tweet = 'This is just a plain old tweet.';
-		$this->assertEquals($t->tweet, $t->get_linked_tweet());
+		$this->assertEquals($t->tweet, $t->getFormattedTweet());
 	}
 
 	// get_linked_tweet(url)
 	public function testLinkedTweetWithUrl() {
 		$t = new Tweet();
 		$t->tweet = 'This is a tweet with a URL http://amwhalen.com in it.';
-		$this->assertEquals('This is a tweet with a URL <a href="http://amwhalen.com">http://amwhalen.com</a> in it.', $t->get_linked_tweet());
+		$this->assertEquals('This is a tweet with a URL <a href="http://amwhalen.com">http://amwhalen.com</a> in it.', $t->getFormattedTweet());
 	}
 
 	// get_linked_tweet(username)
 	public function testLinkedTweetWithUsername() {
 		$t = new Tweet();
 		$t->tweet = 'This is a tweet with a username @awhalen in it.';
-		$this->assertEquals('This is a tweet with a username <a href="https://twitter.com/awhalen">@awhalen</a> in it.', $t->get_linked_tweet());
+		$this->assertEquals('This is a tweet with a username <a href="https://twitter.com/awhalen">@awhalen</a> in it.', $t->getFormattedTweet());
 	}
 
 	// get_linked_tweet(hashtag)
 	public function testLinkedTweetWithHashTag() {
 		$t = new Tweet();
 		$t->tweet = 'This is a tweet with a hashtag #awesome in it.';
-		$this->assertEquals('This is a tweet with a hashtag <a href="https://twitter.com/search?q=%23awesome">#awesome</a> in it.', $t->get_linked_tweet());
+		$this->assertEquals('This is a tweet with a hashtag <a href="https://twitter.com/search?q=%23awesome">#awesome</a> in it.', $t->getFormattedTweet());
 	}
 
 	// all three links
 	public function testLinkedTweet() {
 		$t = new Tweet();
 		$t->tweet = '@awhalen check out http://amwhalen.com #awesome';
-		$this->assertEquals('<a href="https://twitter.com/awhalen">@awhalen</a> check out <a href="http://amwhalen.com">http://amwhalen.com</a> <a href="https://twitter.com/search?q=%23awesome">#awesome</a>', $t->get_linked_tweet());
+		$this->assertEquals('<a href="https://twitter.com/awhalen">@awhalen</a> check out <a href="http://amwhalen.com">http://amwhalen.com</a> <a href="https://twitter.com/search?q=%23awesome">#awesome</a>', $t->getFormattedTweet());
 	}
 
 	// load(array)
@@ -91,7 +91,6 @@ class TweetTest extends \PHPUnit_Framework_TestCase {
 		$tweetData->created_at = '2013-01-22 13:00:37';
 		$tweetData->tweet = "Archive My Tweets has a new look, and can now import your official twitter archive. https://t.co/e8HDtbYa";
 		$tweetData->source = '<a href="http://twitterrific.com" rel="nofollow">Twitterrific for Mac</a>';
-		$tweetData->truncated = 0;
 		$tweetData->favorited = 0;
 		$tweetData->in_reply_to_status_id = 0;
 		$tweetData->in_reply_to_user_id = 0;
@@ -106,7 +105,6 @@ class TweetTest extends \PHPUnit_Framework_TestCase {
 
 		// test with some not set
 		unset($tweetData->in_reply_to_status_id);
-		unset($tweetData->truncated);
 		unset($tweetData->favorited);
 		$t = new Tweet();
 		$t->load($tweetData);
@@ -126,14 +124,13 @@ class TweetTest extends \PHPUnit_Framework_TestCase {
 		$tweetData->created_at = '2013-01-22 13:00:37';
 		$tweetData->text = "Archive My Tweets has a new look, and can now import your official twitter archive. https://t.co/e8HDtbYa";
 		$tweetData->source = '<a href="http://twitterrific.com" rel="nofollow">Twitterrific for Mac</a>';
-		$tweetData->truncated = 0;
 		$tweetData->favorited = 0;
 		$tweetData->in_reply_to_status_id = 0;
 		$tweetData->in_reply_to_user_id = 0;
 		$tweetData->in_reply_to_screen_name = 0;
 
 		$t = new Tweet();
-		$t->load_json_object($tweetData);
+		$t->loadFromJsonObject($tweetData);
 		foreach ($tweetData as $key=>$value) {
 			if ($key == 'user' || $key == 'text') continue;
 			$this->assertEquals($tweetData->$key, $t->$key);
@@ -157,7 +154,7 @@ class TweetTest extends \PHPUnit_Framework_TestCase {
 			'in_reply_to_screen_name' => 0,
 		);
 		$t = new Tweet();
-		$t->load_array($tweetData);
+		$t->loadFromArray($tweetData);
 		foreach (array_keys($tweetData) as $key) {
 			if ($key == 'user' || $key == 'text') continue;
 			$this->assertEquals($tweetData[$key], $t->$key);

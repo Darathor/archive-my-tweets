@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 use PDO;
 
 // see: http://stackoverflow.com/questions/3138946/mocking-the-pdo-object-using-phpunit

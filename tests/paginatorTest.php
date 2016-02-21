@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class PaginatorTest extends \PHPUnit_Framework_TestCase {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class ImporterTest extends \PHPUnit_Framework_TestCase {
 
@@ -11,7 +11,7 @@ class ImporterTest extends \PHPUnit_Framework_TestCase {
 		require_once dirname(__FILE__) . '/../includes.php';
 
 		// Create a Mock Object for the Model class
-		$this->model = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Model')
+		$this->model = $this->getMockBuilder('Darathor\ArchiveMyTweets\Model')
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -34,7 +34,7 @@ class ImporterTest extends \PHPUnit_Framework_TestCase {
 		// make sure the return value is correct
 		$tweets = $importer->getTweetsInJsonFile($filename);
 		$this->assertCount(6, $tweets);
-		$this->assertEquals('AMWhalen\ArchiveMyTweets\Tweet', get_class($tweets[0]));
+		$this->assertEquals('Darathor\ArchiveMyTweets\Tweet', get_class($tweets[0]));
 		$this->assertEquals(263364339371765760, $tweets[0]->id);
 		$this->assertEquals(14061545, $tweets[0]->user_id);
 		$this->assertEquals(263360591496896513, $tweets[0]->in_reply_to_status_id);
@@ -77,7 +77,7 @@ class ImporterTest extends \PHPUnit_Framework_TestCase {
 	public function testDatabaseError() {
 
 		// model with errors
-		$model = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Model')
+		$model = $this->getMockBuilder('Darathor\ArchiveMyTweets\Model')
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -96,7 +96,7 @@ class ImporterTest extends \PHPUnit_Framework_TestCase {
 	public function testNoNewTweets() {
 
 		// model with all current tweets
-		$model = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Model')
+		$model = $this->getMockBuilder('Darathor\ArchiveMyTweets\Model')
 			->disableOriginalConstructor()
 			->getMock();
 

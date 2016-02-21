@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class RouterTest extends \PHPUnit_Framework_TestCase {
 
@@ -15,7 +15,7 @@ class RouterTest extends \PHPUnit_Framework_TestCase {
 		require_once dirname(__FILE__) . '/../includes.php';
 
 		// Create a mock object for the Controller class
-		$this->controller = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Controller')
+		$this->controller = $this->getMockBuilder('Darathor\ArchiveMyTweets\Controller')
 			->disableOriginalConstructor()
 			->getMock();
 

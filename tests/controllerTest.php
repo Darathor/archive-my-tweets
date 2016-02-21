@@ -1,6 +1,6 @@
 <?php
 
-namespace AMWhalen\ArchiveMyTweets;
+namespace Darathor\Amt;
 
 class ControllerTest extends \PHPUnit_Framework_TestCase {
 
@@ -29,7 +29,7 @@ class ControllerTest extends \PHPUnit_Framework_TestCase {
 		$this->recentTweets = array($this->latestTweet);
 
 		// mock model
-		$this->model = $this->getMockBuilder('AMWhalen\ArchiveMyTweets\Model')
+		$this->model = $this->getMockBuilder('Darathor\ArchiveMyTweets\Model')
 			->disableOriginalConstructor()
 			->getMock();
 
